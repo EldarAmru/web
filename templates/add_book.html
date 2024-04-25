@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<h2>Добавить книгу</h2>
+<form action="/add-book" method="post" class="form" novalidate>
+  <div>{{ form.hidden_tag() }}</div>
+  <div class="mb-3">
+    <label for="book">{{ form.book.label }}</label>
+    {{ form.book(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    <label for="genre1">{{ form.genre1.label }}</label>
+    {{ form.genre1(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    <label for="author">{{ form.author.label }}</label>
+    {{ form.author(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    <label for="description">{{ form.description.label }}</label>
+    {{ form.description(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    <label for="mark">{{ form.mark.label }}</label>
+    {{ form.mark(class="form-control") }}
+  </div>
+  <div class="mb-3 form-check">
+    {{ form.is_finished(class="form-check-input") }}
+    <label for="is_finished" class="form-check-label">
+      {{ form.is_finished.label }}
+    </label>
+  </div>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

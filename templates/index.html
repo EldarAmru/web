@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<h2>Список книг пользователей</h2>
+{% for i in books1 %}
+<h3 class="align-self-start">Книга #{{ loop.index }}</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Название книги</th>
+      <th>Жанр</th>
+      <th>Автор</th>
+      <th>Описание книги</th>
+      <th>Оценка книги</th>
+      <th>Статус</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ i.book}}</td>
+      <td>{{ i.genre1 }}</td>
+      <td>{{ i.author }}</td>
+      <td>{{ i.description }}</td>
+      <td>{{ i.mark }}/10</td>
+      <td>{% if not i.is_finished %}Не {% endif %}прочтена</td>
+    </tr>
+  </tbody>
+</table>
+{% if current_user.is_authenticated and (current_user.id == 1 or current_user.id
+== i.author) %}
+{% endif %} {% endfor %}
+<p><a href="/add-book">Добавить книгу</a></p>
+{% endblock %}
